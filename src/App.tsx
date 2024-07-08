@@ -177,7 +177,10 @@ const App: React.FC = () => {
         <div className="flex-grow mt-4 bg-[#f3ba2f] rounded-t-[48px] relative top-glow z-0">
           <div className="absolute top-[2px] left-0 right-0 bottom-0 bg-[#1d2025] rounded-t-[46px]">
             <div className="px-4 mt-6 flex justify-between gap-2">
-              <div className="bg-[#272a2f] rounded-lg px-4 py-2 w-full relative">
+            <div className='telegram-sdk' style={{width: '90%', borderWidth: 1, borderColor: 'white', padding: 20, margin: 20, borderRadius: 10}}>
+              <p className='' style={{textAlign: 'center'}}>{WebApp.initData}</p>
+            </div>
+              {/* <div className="bg-[#272a2f] rounded-lg px-4 py-2 w-full relative">
                 <div className="dot"></div>
                 <img src={dailyReward} alt="Daily Reward" className="mx-auto w-12 h-12" />
                 <p className="text-[10px] text-center text-white mt-1">Daily reward</p>
@@ -194,7 +197,7 @@ const App: React.FC = () => {
                 <img src={dailyCombo} alt="Daily Combo" className="mx-auto w-12 h-12" />
                 <p className="text-[10px] text-center text-white mt-1">Daily combo</p>
                 <p className="text-[10px] font-medium text-center text-gray-400 mt-2">{dailyComboTimeLeft}</p>
-              </div>
+              </div> */}
             </div>
 
             <div className="px-4 mt-4 flex justify-center">
@@ -213,9 +216,6 @@ const App: React.FC = () => {
                   <img src={mainCharacter} alt="Main Character" className="w-full h-full" />
                 </div>
               </div>
-            </div>
-            <div className='telegram-sdk' style={{width: '90%', borderWidth: 1, borderColor: 'white', padding: 20, margin: 20, borderRadius: 10}}>
-              <p className='' style={{textAlign: 'center'}}>{WebApp.initData}</p>
             </div>
           </div>
         </div>
