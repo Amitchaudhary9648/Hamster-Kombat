@@ -7,6 +7,7 @@ import Settings from './icons/Settings';
 import Mine from './icons/Mine';
 import Friends from './icons/Friends';
 import Coins from './icons/Coins';
+import WebApp from '@twa-dev/sdk'
 
 const App: React.FC = () => {
   const levelNames = [
@@ -36,7 +37,7 @@ const App: React.FC = () => {
   ];
 
   const [levelIndex, setLevelIndex] = useState(6);
-  const [points, setPoints] = useState(365);
+  const [points, setPoints] = useState(0);
   const [clicks, setClicks] = useState<{ id: number, x: number, y: number }[]>([]);
   const pointsToAdd = 11;
   const profitPerHour = 126420;
@@ -125,7 +126,7 @@ const App: React.FC = () => {
   useEffect(() => {
     const pointsPerSecond = Math.floor(profitPerHour / 3600);
     const interval = setInterval(() => {
-      setPoints(prevPoints => prevPoints + pointsPerSecond);
+      //setPoints(prevPoints => prevPoints + pointsPerSecond);
     }, 1000);
     return () => clearInterval(interval);
   }, [profitPerHour]);
@@ -212,6 +213,9 @@ const App: React.FC = () => {
                   <img src={mainCharacter} alt="Main Character" className="w-full h-full" />
                 </div>
               </div>
+            </div>
+            <div className='telegram-sdk' style={{width: '90%', borderWidth: 1, borderColor: 'white', padding: 20, margin: 20, borderRadius: 10}}>
+              <p className='' style={{textAlign: 'center'}}>{WebApp.initData}</p>
             </div>
           </div>
         </div>
