@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Hamster from './icons/Hamster';
-import { binanceLogo,  dollarCoin, hamsterCoin, mainCharacter } from './images';
+import { binanceLogo, dailyCipher, dailyCombo, dailyReward, dollarCoin, hamsterCoin, mainCharacter } from './images';
 import Info from './icons/Info';
 import Settings from './icons/Settings';
 import Mine from './icons/Mine';
 import Friends from './icons/Friends';
 import Coins from './icons/Coins';
-import WebApp from '@twa-dev/sdk'
 
 const App: React.FC = () => {
   const levelNames = [
@@ -37,39 +36,39 @@ const App: React.FC = () => {
   ];
 
   const [levelIndex, setLevelIndex] = useState(6);
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState(365);
   const [clicks, setClicks] = useState<{ id: number, x: number, y: number }[]>([]);
   const pointsToAdd = 11;
   const profitPerHour = 126420;
 
-  // const [dailyRewardTimeLeft, setDailyRewardTimeLeft] = useState("");
-  // const [dailyCipherTimeLeft, setDailyCipherTimeLeft] = useState("");
-  // const [dailyComboTimeLeft, setDailyComboTimeLeft] = useState("");
+  const [dailyRewardTimeLeft, setDailyRewardTimeLeft] = useState("");
+  const [dailyCipherTimeLeft, setDailyCipherTimeLeft] = useState("");
+  const [dailyComboTimeLeft, setDailyComboTimeLeft] = useState("");
 
-  // const calculateTimeLeft = (targetHour: number) => {
-  //   const now = new Date();
-  //   const target = new Date(now);
-  //   target.setUTCHours(targetHour, 0, 0, 0);
+  const calculateTimeLeft = (targetHour: number) => {
+    const now = new Date();
+    const target = new Date(now);
+    target.setUTCHours(targetHour, 0, 0, 0);
 
-  //   if (now.getUTCHours() >= targetHour) {
-  //     target.setUTCDate(target.getUTCDate() + 1);
-  //   }
+    if (now.getUTCHours() >= targetHour) {
+      target.setUTCDate(target.getUTCDate() + 1);
+    }
 
-  //   const diff = target.getTime() - now.getTime();
-  //   const hours = Math.floor(diff / (1000 * 60 * 60));
-  //   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const diff = target.getTime() - now.getTime();
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 
-  //   const paddedHours = hours.toString().padStart(2, '0');
-  //   const paddedMinutes = minutes.toString().padStart(2, '0');
+    const paddedHours = hours.toString().padStart(2, '0');
+    const paddedMinutes = minutes.toString().padStart(2, '0');
 
-  //   return `${paddedHours}:${paddedMinutes}`;
-  // };
+    return `${paddedHours}:${paddedMinutes}`;
+  };
 
   useEffect(() => {
     const updateCountdowns = () => {
-      // setDailyRewardTimeLeft(calculateTimeLeft(0));
-      // setDailyCipherTimeLeft(calculateTimeLeft(19));
-      // setDailyComboTimeLeft(calculateTimeLeft(12));
+      setDailyRewardTimeLeft(calculateTimeLeft(0));
+      setDailyCipherTimeLeft(calculateTimeLeft(19));
+      setDailyComboTimeLeft(calculateTimeLeft(12));
     };
 
     updateCountdowns();
@@ -177,10 +176,7 @@ const App: React.FC = () => {
         <div className="flex-grow mt-4 bg-[#f3ba2f] rounded-t-[48px] relative top-glow z-0">
           <div className="absolute top-[2px] left-0 right-0 bottom-0 bg-[#1d2025] rounded-t-[46px]">
             <div className="px-4 mt-6 flex justify-between gap-2">
-            <div className='telegram-sdk' style={{width: '90%', borderWidth: 1, borderColor: 'white', padding: 20, margin: 20, borderRadius: 10}}>
-              <p className='' style={{textAlign: 'center'}}>{WebApp.initData}</p>
-            </div>
-              {/* <div className="bg-[#272a2f] rounded-lg px-4 py-2 w-full relative">
+              <div className="bg-[#272a2f] rounded-lg px-4 py-2 w-full relative">
                 <div className="dot"></div>
                 <img src={dailyReward} alt="Daily Reward" className="mx-auto w-12 h-12" />
                 <p className="text-[10px] text-center text-white mt-1">Daily reward</p>
@@ -197,7 +193,7 @@ const App: React.FC = () => {
                 <img src={dailyCombo} alt="Daily Combo" className="mx-auto w-12 h-12" />
                 <p className="text-[10px] text-center text-white mt-1">Daily combo</p>
                 <p className="text-[10px] font-medium text-center text-gray-400 mt-2">{dailyComboTimeLeft}</p>
-              </div> */}
+              </div>
             </div>
 
             <div className="px-4 mt-4 flex justify-center">
